@@ -1,13 +1,13 @@
 def build(Map params){
-    sh "docker build -f ${params.DockerfilePath} -t ${params.DockerImage} ${params.DockerContext}"
+    sh "sudo docker build -f ${params.DockerfilePath} -t ${params.DockerImage} ${params.DockerContext}"
 }
 
 def push(Map params){
-    sh "docker push ${params.DockerImage}"
+    sh "sudo docker push ${params.DockerImage}"
 }
 
 def promoter(Map params){
-    sh "docker pull ${params.DockerImage}"
-    sh "docker tag ${params.DockerImage} ${params.DockerNewImage}"
-    sh "docker push ${params.DockerNewImage}"
+    sh "sudo docker pull ${params.DockerImage}"
+    sh "sudo docker tag ${params.DockerImage} ${params.DockerNewImage}"
+    sh "sudo docker push ${params.DockerNewImage}"
 }
